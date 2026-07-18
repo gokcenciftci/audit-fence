@@ -1,0 +1,31 @@
+name: 'AuditFence'
+description: 'A deterministic, local-first AI code reviewer and security guard for CI.'
+author: 'Gökçen Çiftci'
+branding:
+  icon: 'shield'
+  color: 'blue'
+inputs:
+  paths:
+    description: 'Space-separated paths to audit (files or directories).'
+    required: false
+    default: '.'
+  provider:
+    description: 'AI Provider: heuristic (default), ollama, mock.'
+    required: false
+    default: 'heuristic'
+  rules:
+    description: 'Comma-separated list of rule IDs to run.'
+    required: false
+  format:
+    description: 'Output format: text or json.'
+    required: false
+    default: 'text'
+  ollama-endpoint:
+    description: 'Ollama REST API endpoint URL.'
+    required: false
+  ollama-model:
+    description: 'Ollama model name (e.g. qwen2.5-coder:1.5b).'
+    required: false
+runs:
+  using: 'node20'
+  main: 'dist/cli.js'

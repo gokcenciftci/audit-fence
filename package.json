@@ -1,0 +1,66 @@
+{
+  "name": "audit-fence",
+  "version": "0.1.0",
+  "description": "A deterministic, local-first AI code reviewer and security guard for CLI and CI/CD.",
+  "author": "Gökçen Çiftci <contact@gokcenciftci.me>",
+  "license": "MIT",
+  "homepage": "https://github.com/gokcenciftci/audit-fence#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gokcenciftci/audit-fence.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gokcenciftci/audit-fence/issues"
+  },
+  "keywords": [
+    "audit",
+    "security",
+    "ai",
+    "code-review",
+    "local-first",
+    "cli",
+    "github-actions",
+    "linter"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "audit-fence": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "action.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts src/cli.ts --format esm --dts --out-dir dist --clean",
+    "dev": "tsup src/index.ts src/cli.ts --format esm --watch",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "smoke": "node scripts/smoke.mjs",
+    "validate": "npm run lint && npm run format:check && npm run typecheck && npm run test:coverage && npm run build && npm run smoke"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "@types/node": "^22.13.4",
+    "@vitest/coverage-v8": "^3.0.5",
+    "eslint": "^9.20.1",
+    "eslint-config-prettier": "^10.0.1",
+    "prettier": "^3.5.1",
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.0",
+    "vitest": "^3.0.5"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
